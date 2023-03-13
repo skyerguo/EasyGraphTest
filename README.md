@@ -32,7 +32,7 @@ make -j$(nproc) && sudo make install
 
 # 代码运行
 
-## Test
+## EasyGraphTest
 
 ### shortest_path_dijkstra
 
@@ -45,7 +45,8 @@ time ./pa ../verified_dataset/roads/a.in
 ### shortest_path_dijkstra
 
 ```
-g++ -g -O2 -std=c++11 -o pa shortest_path_Spfa.cpp
+cd ~/EasyGraphTest/code
+g++ -g -O2 -std=c++11 -o pa shortest_path_dijkstra.cpp
 time ./pa ../verified_dataset/roads/a.in
 ```
 
