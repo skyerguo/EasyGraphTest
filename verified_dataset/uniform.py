@@ -7,13 +7,14 @@ import math
 import sys
 
 p = argparse.ArgumentParser(description='Analyze the result')
-p.add_argument('-i', '--input_file', type=str, default="", dest="inputfile", action="store", help="the file name of input file")
+p.add_argument('-i', '--input_file', type=str, default="", dest="inputfile", action="store", help="the name of input file")
+p.add_argument('-d', '--input_directory', type=str, default="", dest="inputdirectory", action="store", help="the name of input directory")
 
 args = p.parse_args()
 
 input_file = args.inputfile
-output_file = './a.in'
-output2_file = './a.lgl'
+output_file = args.inputdirectory + '/a.in'
+output2_file = args.inputdirectory + '/a.lgl'
 
 n = 0
 m = 0
