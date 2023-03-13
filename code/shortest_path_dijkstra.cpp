@@ -53,7 +53,7 @@ void input(const char *file_name) {
     }
 }
 
-__gnu_pbds ::priority_queue<compare_node> q;
+__gnu_pbds::priority_queue<compare_node> q;
 void dijkstra(const int &S) {
     memset(dis, 0x7f, sizeof(int) * N);
     memset(vis, false, sizeof(bool) * N);
