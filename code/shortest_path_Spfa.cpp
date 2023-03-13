@@ -36,8 +36,8 @@ inline void add_edge(const int &u, const int &v, const int &w) {
 #define getE(p,u) for(register int p = head[u]; p; p = E[p].next)
 
 
-void input() {
-    FILE* input_file = fopen("../dataset/a.in", "r");
+void input(const char *file_name) {
+    FILE* input_file = fopen(file_name, "r");
     fscanf(input_file, " %d %d", &N, &M);
     // scanf(" %d %d %d", &N, &M, &S);
     int u, v, w;
@@ -80,15 +80,20 @@ void Spfa(const int &S)
 	}	
 }
 
-FILE* output_file = fopen("./results/b.out", "w");
+FILE* output_file = fopen("../results/b.out", "w");
 void output() {
     for (int j = 0; j < N; ++j)
         fprintf(output_file, "%d\n", dis[j]);
     fprintf(output_file, "\n");
 }
 
-int main() {
-    input();
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        cout << "Usage: " << argv[0] << " file_name" << endl;
+        return 1;
+    }
+
+    input(argv[1]);
     for (int i = 0; i < N; ++i) {
         Spfa(i);
         // output();
