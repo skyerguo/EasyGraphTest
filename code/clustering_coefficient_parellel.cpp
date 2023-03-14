@@ -29,11 +29,10 @@ inline void add_edge(const int &u, const int &v) {
 void input(const char *file_name) {
     FILE* input_file = fopen(file_name, "r");
     fscanf(input_file, " %d %d", &N, &M);
-    // scanf(" %d %d %d", &N, &M, &S);
-    int u, v, w;
+    cout << N << " " << M << endl;
+    int u, v;
     for (int i = 0; i < M; ++i) {
         fscanf(input_file, " %d %d", &u, &v);
-        // scanf(" %d %d %d", &u, &v, &w);
         add_edge(u, v);
         if (if_undirected)
             add_edge(v, u);
@@ -44,8 +43,10 @@ double clustering_coefficient() {
     double coeff_sum = 0;
     #pragma omp parallel for reduction(+:coeff_sum)
     for (int i = 0; i < N; i++) {
-        int num_links = 0;
         int num_neighbors = s[i].size();
+        if (num_neighbors < 2) continue;
+        int num_links = 0;
+        
         get_edge_from_node(j, i) {
             get_edge_from_edge(k, j) {
                 if (s[E[j].toward].find(E[k].toward) != s[E[j].toward].end())
