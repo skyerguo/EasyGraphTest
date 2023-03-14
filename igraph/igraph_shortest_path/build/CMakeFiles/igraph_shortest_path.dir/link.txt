@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/igraph_shortest_path.dir/igraph_shortest_path.c.o -o igraph_shortest_path  /usr/local/lib/libigraph.a -lm /usr/lib/gcc/x86_64-linux-gnu/7/libgomp.so -lpthread 
