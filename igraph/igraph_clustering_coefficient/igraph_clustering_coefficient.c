@@ -32,13 +32,13 @@ int main(void) {
     FILE *f;
     igraph_set_attribute_table(&igraph_cattribute_table);
 
-    // input = fopen("a_unweighted.lgl", "r");
-    // igraph_read_graph_lgl(&g, input, 0, IGRAPH_ADD_WEIGHTS_NO, IGRAPH_UNDIRECTED);
-    // fclose(input);
-    f = fopen("bio.edgelist", "r");
-    igraph_read_graph_edgelist(&g, f, 0, IGRAPH_UNDIRECTED);
+    input = fopen("a_unweighted.lgl", "r");
+    igraph_read_graph_lgl(&g, input, 0, IGRAPH_ADD_WEIGHTS_NO, IGRAPH_UNDIRECTED);
+    fclose(input);
+    // f = fopen("bio.edgelist", "r");
+    // igraph_read_graph_edgelist(&g, f, 0, IGRAPH_UNDIRECTED);
 
-    igraph_transitivity_undirected(&g, &res, IGRAPH_TRANSITIVITY_NAN);
+    igraph_transitivity_avglocal_undirected(&g, &res, IGRAPH_TRANSITIVITY_ZERO);
     printf("res: %f\n", res);
 
     igraph_destroy(&g);
