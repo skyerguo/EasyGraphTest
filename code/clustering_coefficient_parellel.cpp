@@ -16,7 +16,7 @@ struct Edge_weighted{
 Edge_weighted E[Maxm];
 
 int edge_number = 0;
-bool if_undirected = false;
+bool if_undirected = true;
 inline void add_edge(const int &u, const int &v) {
     E[++edge_number].next = head[u];
     E[edge_number].toward = v;
@@ -24,12 +24,11 @@ inline void add_edge(const int &u, const int &v) {
     s[u].insert(v);
 }
 #define get_edge_from_node(p,u) for(register int p = head[u]; p; p = E[p].next)
-#define get_edge_from_edge(p,u) for(register int p = E[u].next; p; p = E[p].next)
+#define get_edge_from_edge(q,p) for(register int q = E[p].next; q; q = E[q].next)
 
 void input(const char *file_name) {
     FILE* input_file = fopen(file_name, "r");
     fscanf(input_file, " %d %d", &N, &M);
-    cout << N << " " << M << endl;
     int u, v;
     for (int i = 0; i < M; ++i) {
         fscanf(input_file, " %d %d", &u, &v);
@@ -46,24 +45,15 @@ double clustering_coefficient() {
         int num_neighbors = s[i].size();
         if (num_neighbors < 2) continue;
         int num_links = 0;
-        
-        get_edge_from_node(j, i) {
-            get_edge_from_edge(k, j) {
-                if (s[E[j].toward].find(E[k].toward) != s[E[j].toward].end())
+
+        get_edge_from_node(p, i) {
+            get_edge_from_edge(q, p) {
+                if (s[E[p].toward].find(E[q].toward) != s[E[p].toward].end())
                     num_links++;
             }
         }
-        // int num_neighbors = adj_list[i].size();
-        // if (num_neighbors < 2) continue;
-        // int num_links = 0;
-        // for (int j = 0; j < num_neighbors; j++) {
-        //     int neighbor = adj_list[i][j];
-        //     for (int k = j+1; k < num_neighbors; k++) {
-        //         if (find(adj_list[neighbor].begin(), adj_list[neighbor].end(), adj_list[i][k]) != adj_list[neighbor].end())
-        //             num_links++;
-        //     }
-        // }
-        coeff_sum += (double)num_links / ((double)num_neighbors * (double)(num_neighbors - 1));
+        coeff_sum += 2 * (double)num_links / ((double)num_neighbors * (double)(num_neighbors - 1));
+        // printf("%d %f\n", i, 2 * (double)num_links / ((double)num_neighbors * (double)(num_neighbors - 1)));
     }
     return coeff_sum / N;
 }

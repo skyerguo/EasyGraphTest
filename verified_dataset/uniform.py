@@ -31,6 +31,7 @@ if __name__ == '__main__':
         m += 1
         n = max(n, max(int(re.split(r'\s',line)[0]), int(re.split(r'\s',line)[1])))
     f_in.close()
+    n += 1
     print(n, m, file=f_out1_weighted)
     print(n, m, file=f_out1_unweighted)
     

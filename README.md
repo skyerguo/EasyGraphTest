@@ -4,7 +4,8 @@
 
 ```
 sudo apt-get install update
-sudo apt-get update && sudo apt-get -yqq install git
+sudo apt-get update && sudo apt-get -yqq install git python3-pip
+pip3 install networkx numpy pandas
 cd ~/.ssh && ssh-keygen -C gtc -f id_rsa -t rsa -N ''
 cat id_rsa.pub
 ```
@@ -50,6 +51,11 @@ g++ -g -O2 -std=c++11 -o pa shortest_path_dijkstra.cpp
 time ./pa ../verified_dataset/roads/a.in
 ```
 
+### clustering_coefficient_parallel
+```
+g++ -g -O2 -std=c++11 -o pa clustering_coefficient_parellel.cpp
+```
+
 
 
 # igraph
@@ -91,6 +97,6 @@ target_link_libraries(igraph_test PUBLIC igraph::igraph)
 ```
 cd build
 cmake .. && cmake --build .
-cp ../../verified_dataset/roads/a.lgl ./
+cp ../../../verified_dataset/roads/a.lgl ./
 time ./igraph_test
 ```

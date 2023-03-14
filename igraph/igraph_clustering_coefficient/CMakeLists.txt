@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.18)
+project(igraph_clustering_coefficient)
+
+find_package(igraph REQUIRED)
+
+add_executable(igraph_clustering_coefficient igraph_clustering_coefficient.c)
+target_link_libraries(igraph_clustering_coefficient PUBLIC igraph::igraph)
