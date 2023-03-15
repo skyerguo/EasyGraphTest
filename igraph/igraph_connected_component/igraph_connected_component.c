@@ -7,8 +7,8 @@ int main(void) {
     FILE *input;
     igraph_set_attribute_table(&igraph_cattribute_table);
 
-    input = fopen("a_unweighted.lgl", "r");
-    igraph_read_graph_lgl(&g, input, 0, IGRAPH_ADD_WEIGHTS_NO, IGRAPH_UNDIRECTED);
+    input = fopen("a_unweighted_directed.lgl", "r");
+    igraph_read_graph_lgl(&g, input, 0, IGRAPH_ADD_WEIGHTS_NO, IGRAPH_DIRECTED);
     fclose(input);
 
     igraph_vector_int_init(&component_sizes, 0);
