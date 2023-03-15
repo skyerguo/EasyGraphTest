@@ -3,6 +3,8 @@ igraph_test/igraph_test
 igraph_test/a.lgl
 igraph/igraph_clustering_coefficient/build/a_unweighted.lgl
 igraph/igraph_clustering_coefficient/build/igraph_clustering_coefficient
+igraph/igraph_pagerank/build/*.lgl
 verified_dataset/coauthorship/*
 verified_dataset/google/*
+verified_dataset/pokec/*
 results/*
