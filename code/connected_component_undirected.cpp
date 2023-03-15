@@ -10,18 +10,14 @@ int N, M;
 int parent[Maxn], rank_node[Maxn], color[Maxn];
 bool has_edge[Maxn];
 
-int getfa(const int & x)
-{
+int getfa(const int & x) {
     int r,k,t;
     r=x;
     while(parent[r]!=r)
-    {
         r=parent[r];
-    }
     k=r;
     r=x;
-    while(parent[r]!=k)
-    {
+    while(parent[r]!=k) {
         t=parent[r];
         parent[r]=k;
         r=t;
@@ -30,8 +26,7 @@ int getfa(const int & x)
 }
  
 //合并操作
-inline void union_node(const int &u, const int &v)
-{
+inline void union_node(const int &u, const int &v) {
     int x = getfa(u), y = getfa(v);    //先找到两个根节点
     if (rank_node[x] <= rank_node[y])
         parent[x] = y;
