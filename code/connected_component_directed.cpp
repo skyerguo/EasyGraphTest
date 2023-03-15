@@ -55,13 +55,8 @@ void Tarjan(const int &u) { //有向图
     }
 
     if (dfn[u] == low[u]) {
-        if (has_edge[u]) {
-            for (++Tot; st[cnt] != u; --cnt) in_stack[st[cnt]] = false, color[st[cnt]] = Tot;
-            in_stack[u] = false; color[u] = Tot; --cnt;
-        }
-        else {
-            in_stack[u] = false; --cnt;
-        }
+        for (++Tot; st[cnt] != u; --cnt) in_stack[st[cnt]] = false, color[st[cnt]] = Tot;
+        in_stack[u] = false; color[u] = Tot; --cnt;
     }
 }
 
@@ -75,7 +70,7 @@ int main(int argc, char *argv[]) {
 
     input(argv[1]);
     for (int i = 0; i < N; ++i)
-        if (!dfn[i])
+        if (!dfn[i] && has_edge[i])
             Tarjan(i);
     printf("有向图的连通分量: %d\n", Tot);
 
