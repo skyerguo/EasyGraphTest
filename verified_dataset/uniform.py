@@ -89,13 +89,14 @@ if __name__ == '__main__':
         
         if not args.weighted:
             for j in edge_list_unweighted[i]:
-                print(i, j, file=f_out1)
-                print("%i"%(j), file=f_out2)
-                if args.edgelist:
-                    print(i, j, file=f_out3)
+                if (i < j) and (not args.directed):
+                    print(i, j, file=f_out1)
+                    print("%i"%(j), file=f_out2)
+                    if args.edgelist:
+                        print(i, j, file=f_out3)
         else:
-            if args.weighted:
-                for j in range(len(edge_list_weighted[i])):
+            for j in range(len(edge_list_weighted[i])):
+                if (i < j) and (not args.directed):
                     print("%i %i %i"%(i, edge_list_weighted[i][j][0], edge_list_weighted[i][j][1]), file=f_out1)
                     print("%i %i"%(edge_list_weighted[i][j][0], edge_list_weighted[i][j][1]), file=f_out2)
                 

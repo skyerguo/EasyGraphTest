@@ -14,7 +14,6 @@ int main(void) {
     fclose(input);
 
     igraph_vector_init(&pagerank, 0);
-    exit(0);
 
     igraph_pagerank(&g, IGRAPH_PAGERANK_ALGO_PRPACK,
                     &pagerank, &value,
