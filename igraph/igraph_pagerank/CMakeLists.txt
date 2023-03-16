@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.18)
-project(igraph_connected_igraph_pagerankcomponent)
+project(igraph_pagerank)
 
 find_package(igraph REQUIRED)
 

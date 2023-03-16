@@ -1,0 +1,3 @@
+/users/gtc/EasyGraphTest/igraph/igraph_k_core/build/CMakeFiles/rebuild_cache.dir
+/users/gtc/EasyGraphTest/igraph/igraph_k_core/build/CMakeFiles/igraph_k_core.dir
+/users/gtc/EasyGraphTest/igraph/igraph_k_core/build/CMakeFiles/edit_cache.dir

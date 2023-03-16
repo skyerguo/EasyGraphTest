@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/igraph_k_core.dir/igraph_k_core.c.o -o igraph_k_core  /usr/local/lib/libigraph.a -lm /usr/lib/gcc/x86_64-linux-gnu/7/libgomp.so -lpthread 
