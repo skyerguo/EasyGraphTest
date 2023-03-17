@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.18)
+project(igraph_closeness_centrality)
+
+find_package(igraph REQUIRED)
+
+add_executable(igraph_closeness_centrality igraph_closeness_centrality.c)
+target_link_libraries(igraph_closeness_centrality PUBLIC igraph::igraph)
