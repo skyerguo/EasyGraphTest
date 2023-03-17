@@ -52,7 +52,7 @@ void Spfa(const int &S)
     		swap(Q[l], Q[r - 1]);
         int u = Q[l++]; 
         if (l >= N) l -= N; 
-        vis[u] = true;
+        vis[u] = false;
 
         getE(p, u) {
             int v=E[p].toward; 
