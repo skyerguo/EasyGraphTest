@@ -21,7 +21,7 @@ bool in_stack[Maxn];
 struct Edge_weighted{
     int toward, next;
 };
-Edge_weighted E[Maxm];
+Edge_weighted E[Maxm], E_res[Maxm];
 
 int edge_number = 0;
 bool if_directed = true;
@@ -31,6 +31,15 @@ inline void add_edge(const int &u, const int &v) {
     head[u] = edge_number;
 }
 #define get_edge_from_node(p,u) for(register int p = head[u]; p; p = E[p].next)
+
+int edge_number_res = 0;
+int head_res[Maxn];
+inline void add_edge_res(const int &u, const int &v) {
+    E_res[++edge_number_res].next = head_res[u];
+    E_res[edge_number_res].toward = v;
+    head_res[u] = edge_number_res;
+}
+#define get_edge_from_node_res(p,u) for(int p = head_res[u]; p; p = E_res[p].next)
 
 void input(const char *file_name) {
     FILE* input_file = fopen(file_name, "r");
@@ -55,11 +64,23 @@ void Tarjan(const int &u) { //有向图
     }
 
     if (dfn[u] == low[u]) {
-        for (++Tot; st[cnt] != u; --cnt) in_stack[st[cnt]] = false, color[st[cnt]] = Tot;
+        for (++Tot; st[cnt] != u; --cnt) {
+            add_edge_res(Tot, st[cnt]);
+            in_stack[st[cnt]] = false, color[st[cnt]] = Tot;
+        }
+        add_edge_res(Tot, st[cnt]);
         in_stack[u] = false; color[u] = Tot; --cnt;
     }
 }
 
+void output() {
+    for (int i = 1; i <= Tot; ++i) {
+        cout << "当前连通分量为: " << i << endl;
+        get_edge_from_node_res(p, i)
+            cout << E_res[p].toward << " ";
+        cout << endl;
+    }
+}
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
@@ -71,6 +92,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < N; ++i)
         if (!dfn[i] && has_edge[i])
             Tarjan(i);
+    output();
     printf("有向图的连通分量: %d\n", Tot);
 
     return 0;
