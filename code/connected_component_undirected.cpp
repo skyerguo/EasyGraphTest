@@ -6,9 +6,23 @@ const int Maxn = 2000005;
 
 using namespace std;
 
-int N, M;
+int N, M, Tot;
 int parent[Maxn], rank_node[Maxn], color[Maxn];
 bool has_edge[Maxn];
+
+struct Edge_weighted{
+    int toward, next;
+};
+Edge_weighted E_res[Maxn];
+
+int edge_number_res = 0;
+int head_res[Maxn];
+inline void add_edge_res(const int &u, const int &v) {
+    E_res[++edge_number_res].next = head_res[u];
+    E_res[edge_number_res].toward = v;
+    head_res[u] = edge_number_res;
+}
+#define get_edge_from_node_res(p,u) for(int p = head_res[u]; p; p = E_res[p].next)
 
 int getfa(const int & x) {
     int r,k,t;
@@ -52,6 +66,19 @@ void input(const char *file_name) {
     }
 }
 
+void output() {
+    for (int i = 0; i < N; ++i) {
+        int fx = getfa(i);
+        add_edge_res(fx, i);
+    }
+    for (int i = 1; i <= Tot; ++i) {
+        cout << "当前连通分量为: " << i << endl;
+        get_edge_from_node_res(p, color[i])
+            cout << E_res[p].toward << " ";
+        cout << endl;
+    }
+}
+
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         cout << "Usage: " << argv[0] << " file_name" << endl;
@@ -59,16 +86,15 @@ int main(int argc, char *argv[]) {
     }
 
     input(argv[1]);
-    int count = 0;
+    Tot = 0;
 	for(int i = 0; i < N; ++i) {
         if (!has_edge[i])
             continue;
 		int fx = getfa(i);
-		if(fx == i){
-			count++;
-			color[count] = fx;
-		}
+		if(fx == i)
+			color[++Tot] = fx;
 	}
-	printf("无向连通图的连通分量: %d\n", count);
+    output();
+	printf("无向连通图的连通分量: %d\n", Tot);
     return 0;
 }

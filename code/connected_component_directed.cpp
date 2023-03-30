@@ -21,7 +21,7 @@ bool in_stack[Maxn];
 struct Edge_weighted{
     int toward, next;
 };
-Edge_weighted E[Maxm], E_res[Maxm];
+Edge_weighted E[Maxm], E_res[Maxn];
 
 int edge_number = 0;
 bool if_directed = true;
